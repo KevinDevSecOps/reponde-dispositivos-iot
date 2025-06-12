@@ -1,4 +1,4 @@
-## Reponde Dispositivos IoT
+## Repositorio de Dispositivos IoT
 
 Repositorio para scripts y código de ejemplo para responder/controlar dispositivos IoT.
 
