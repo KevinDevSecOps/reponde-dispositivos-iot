@@ -1,0 +1,22 @@
+import socket
+
+def start_listener(port=1883):
+    """Ejemplo simple de escucha en un puerto (simulación de gateway IoT)."""
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.bind(('', port))
+    s.listen(5)
+    print(f"Escuchando IoT en el puerto {port}...")
+    try:
+        while True:
+            conn, addr = s.accept()
+            print(f"Conexión desde {addr}")
+            data = conn.recv(1024)
+            if data:
+                print(f"Recibido: {data.decode()}")
+                respuesta = b"ACK"
+                conn.sendall(respuesta)
+            conn.close()
+    except KeyboardInterrupt:
+        print("Cerrando listener.")
+    finally:
+        s.close()
